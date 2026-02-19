@@ -6,6 +6,20 @@ OpenSquad ist ein Multi-Agent AI System, das ein virtuelles Entwicklerteam mit s
 
 ## 🎯 Vision
 
+### Langfristige Vision: Self-Improving Agentic System
+
+**OpenSquad entwickelt sich selbst weiter.**
+
+Die Agents in diesem Projekt sollen in der Lage sein, das OpenSquad-Projekt eigenständig weiterzuentwickeln – ein **selbstverbesserndes Multi-Agent System**. Dies bedeutet:
+
+- 🔄 **Agents entwickeln Agents**: Neue Agent-Implementierungen durch bestehende Agents
+- 🛠️ **Tool-gesteuerte Development**: Agents nutzen Git, GitHub API, File Operations
+- 📋 **Autonomous Workflow**: Issue-Erstellung, Feature Branches, PRs – vollständig autonom
+- ✅ **Self-Review & Quality Gates**: Code Review Agent validiert Änderungen
+- 🧠 **Self-Reflection**: Agents evaluieren eigene Outputs und iterieren
+
+### Praktische Ziele
+
 - Praktische Erfahrung mit Agentic AI und Multi-Agent-Architekturen sammeln
 - Enterprise-fähige AI-Systeme mit Fokus auf Architektur und Systemdesign entwickeln
 - Thought Leadership im Bereich AI Agent Orchestration aufbauen
