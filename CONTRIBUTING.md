@@ -4,6 +4,12 @@ Vielen Dank für dein Interesse an OpenSquad! Dieses Dokument beschreibt unsere 
 
 ## 🔄 Development Workflow
 
+### Grundprinzipien
+
+1. **Issue-First**: Jede Änderung beginnt mit einem GitHub Issue
+2. **Feature Branches**: Niemals direkt auf `main` committen
+3. **Conventional Commits**: Verwende stets Conventional Commit Messages
+
 ### 1. Issue-First Ansatz
 
 **Jede Änderung beginnt mit einem GitHub Issue.**
@@ -73,7 +79,9 @@ git branch -d feature/5-implement-qa-agent
 
 ### 3. Commit Message Convention
 
-Wir folgen [Conventional Commits](https://www.conventionalcommits.org/):
+**⚠️ WICHTIG: Verwende stets Conventional Commit Messages!**
+
+Wir folgen strikt dem [Conventional Commits](https://www.conventionalcommits.org/) Standard:
 
 ```
 <type>: <description> (#issue-nummer)
@@ -97,6 +105,12 @@ git commit -m "feat: Add architect agent implementation (#3)"
 git commit -m "fix: Correct ollama connection timeout (#7)"
 git commit -m "docs: Update AGENTS.md with workflow examples (#2)"
 ```
+
+**Warum Conventional Commits?**
+- Automatische Changelog-Generierung
+- Semantische Versionierung
+- Bessere Nachvollziehbarkeit der Änderungen
+- Standard für moderne Projekte
 
 ## 🤖 Entwicklung mit AI-Tools
 
