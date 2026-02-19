@@ -151,6 +151,8 @@ class TeamState:
 - **Issue-First**: Erstelle immer zuerst ein GitHub Issue
 - **Feature Branches**: Niemals direkt auf `main` committen
 - Branch-Format: `feature/issue-nummer-beschreibung`
+- **Akzeptanzkriterien**: Issues dürfen nur geschlossen werden, wenn ALLE Akzeptanzkriterien erfüllt sind
+- **PR Merge**: Pull Requests nur mergen, wenn alle Akzeptanzkriterien des zugehörigen Issues abgehakt sind
 
 #### 3. Agent-Implementierung
 Wenn du einen neuen Agent implementierst:
