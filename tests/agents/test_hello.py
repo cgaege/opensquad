@@ -1,6 +1,6 @@
 """Tests for HelloAgent."""
 
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -175,11 +175,11 @@ async def test_hello_agent_multiple_calls(mock_llm_class):
     mock_llm_class.return_value = mock_llm
 
     agent = HelloAgent()
-    
+
     result1 = await agent.process("First message")
     assert result1["status"] == "completed"
-    
+
     result2 = await agent.process("Second message")
     assert result2["status"] == "completed"
-    
+
     assert mock_llm.invoke.call_count == 2
