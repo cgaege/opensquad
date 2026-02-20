@@ -38,13 +38,25 @@ Implement QA Agent for automated testing and validation
 
 ### 2. Feature Branch Strategy
 
-**Never commit directly to `main`.**
+**⚠️ NEVER COMMIT DIRECTLY TO `main` - NO EXCEPTIONS ⚠️**
+
+This applies to **ALL** changes including:
+- ✅ New features
+- ✅ Bug fixes
+- ✅ Documentation updates
+- ✅ CI/CD changes (workflows, configs)
+- ✅ Infrastructure code
+- ✅ README changes
+- ✅ Quick fixes
+
+**If you're about to commit to `main`, STOP and create a feature branch instead.**
 
 #### Branch Naming Convention
 ```
 feature/issue-number-short-description
 bugfix/issue-number-short-description
 docs/issue-number-short-description
+ci/issue-number-short-description
 ```
 
 **Examples:**
@@ -155,6 +167,34 @@ How was this tested?
 - [ ] Documentation updated
 - [ ] Code reviewed
 ```
+
+---
+
+## ⚠️ Common Mistakes to Avoid
+
+### ❌ DON'T: Commit directly to main
+```bash
+# WRONG - DO NOT DO THIS!
+git checkout main
+git add .
+git commit -m "Add CI pipeline"
+git push
+```
+
+### ✅ DO: Create issue and feature branch
+```bash
+# CORRECT - Always do this!
+gh issue create --title "Add CI/CD pipeline"
+git checkout -b ci/7-add-ci-cd-pipeline
+git add .
+git commit -m "ci: Add GitHub Actions pipeline (#7)"
+git push -u origin ci/7-add-ci-cd-pipeline
+gh pr create --title "Add CI/CD pipeline" --body "Closes #7"
+```
+
+**Remember:** Even "quick fixes" need an issue and feature branch!
+
+---
 
 ## 🏗️ Projektstruktur
 
