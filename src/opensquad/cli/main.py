@@ -35,7 +35,13 @@ def hello(
     console.print(f"\n[yellow]User:[/yellow] {message}\n")
 
     # Create and run agent
-    agent = HelloAgent()
+    from opensquad.agents.base import AgentConfig, AgentRole
+    config = AgentConfig(
+        name="HelloAgent",
+        role=AgentRole.BACKEND,
+        model=model
+    )
+    agent = HelloAgent(config)
     result = asyncio.run(agent.process(message))
 
     # Display result
