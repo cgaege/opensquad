@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+        pip install pytest pytest-asyncio pytest-cov ruff mypy
+    
+    - name: Lint with ruff
+      run: |
+        ruff check src/ tests/
+    
+    - name: Type check with mypy
+      run: |
+        mypy src/opensquad --ignore-missing-imports
+    
+    - name: Test with pytest
+      run: |
+        pytest tests/ -v --cov=src/opensquad --cov-report=xml --cov-report=term-missing --cov-fail-under=70
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  integration:
+    name: Integration Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: Install Ollama
+      run: |
+        curl -fsSL https://ollama.com/install.sh | sh
+    
+    - name: Start Ollama service
+      run: |
+        ollama serve &
+        sleep 5
+    
+    - name: Pull test model
+      run: |
+        ollama pull llama3.2:1b
+    
+    - name: Run integration tests
+      run: |
+        python -c "
+        import asyncio
+        from opensquad.agents.hello import HelloAgent
+        from opensquad.agents.base import AgentConfig, AgentRole
+        
+        async def test():
+            config = AgentConfig(name='Test', role=AgentRole.BACKEND, model='llama3.2:1b')
+            agent = HelloAgent(config)
+            result = await agent.process('Hello')
+            assert result['status'] == 'completed'
+            print('✓ Integration test passed')
+        
+        asyncio.run(test())
+        "
