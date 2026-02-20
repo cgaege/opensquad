@@ -1,12 +1,12 @@
-# 🤖 OpenSquad Agents – Systemdokumentation
+# 🤖 OpenSquad Agents – System Documentation
 
-Diese Datei dokumentiert das Multi-Agent System von OpenSquad und dient als Leitfaden für die Entwicklung und Nutzung der AI Agents.
+This file documents the multi-agent system of OpenSquad and serves as a guide for developing and using the AI agents.
 
-## 📋 Übersicht
+## 📋 Overview
 
-OpenSquad ist ein **Multi-Agent AI System**, das ein virtuelles Software-Entwicklerteam simuliert. Verschiedene spezialisierte Agents arbeiten zusammen, um komplexe Software-Engineering-Aufgaben zu lösen.
+OpenSquad is a **multi-agent AI system** that simulates a virtual software development team. Various specialized agents work together to solve complex software engineering tasks.
 
-### System-Architektur
+### System Architecture
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -34,23 +34,23 @@ OpenSquad ist ein **Multi-Agent AI System**, das ein virtuelles Software-Entwick
      └─────────────────┘
 ```
 
-## 🎭 Agent-Rollen
+## 🎭 Agent Roles
 
 ### 1. Architect Agent 🏗️
 
-**Verantwortlichkeiten:**
-- Analyse von User Requirements
-- System-Design und Architektur-Entscheidungen
-- Task-Dekomposition (Breaking down in Sub-Tasks)
-- Technologie-Stack Empfehlungen
-- Definition von Interfaces zwischen Komponenten
+**Responsibilities:**
+- Analysis of user requirements
+- System design and architecture decisions
+- Task decomposition (breaking down into sub-tasks)
+- Technology stack recommendations
+- Definition of interfaces between components
 
-**Typische Aufgaben:**
+**Typical Tasks:**
 - "Design a REST API for user management"
 - "Create architecture for a microservices system"
 - "Decompose this feature into implementable tasks"
 
-**Beispiel:**
+**Example:**
 ```python
 architect = ArchitectAgent()
 result = await architect.create_task_plan(
@@ -60,19 +60,19 @@ result = await architect.create_task_plan(
 
 ### 2. Backend Agent 💻
 
-**Verantwortlichkeiten:**
-- API Design und Implementierung (REST/GraphQL)
-- Datenbank-Schema Design
-- Business Logic Implementierung
+**Responsibilities:**
+- API design and implementation (REST/GraphQL)
+- Database schema design
+- Business logic implementation
 - Authentication & Authorization
-- Backend Testing
+- Backend testing
 
-**Typische Aufgaben:**
+**Typical Tasks:**
 - "Implement the user authentication API"
 - "Create database schema for tasks"
 - "Add validation and error handling"
 
-**Beispiel:**
+**Example:**
 ```python
 backend = BackendAgent()
 result = await backend.implement_feature(
@@ -83,79 +83,79 @@ result = await backend.implement_feature(
 
 ### 3. Frontend Agent 🎨
 
-**Verantwortlichkeiten:**
-- UI/UX Implementierung
-- Component-Architektur
-- State Management
-- API Integration
-- Frontend Testing
+**Responsibilities:**
+- UI/UX implementation
+- Component architecture
+- State management
+- API integration
+- Frontend testing
 
-**Status:** 🚧 Geplant für Phase 2
+**Status:** 🚧 Planned for Phase 2
 
 ### 4. QA Agent 🧪
 
-**Verantwortlichkeiten:**
-- Test Case Generierung
-- Automatisierte Tests schreiben
-- Code Validation
-- Bug Detection
-- Test Coverage Analysis
+**Responsibilities:**
+- Test case generation
+- Write automated tests
+- Code validation
+- Bug detection
+- Test coverage analysis
 
-**Status:** 🚧 Geplant für Phase 2
+**Status:** 🚧 Planned for Phase 2
 
 ### 5. Reviewer Agent 👁️
 
-**Verantwortlichkeiten:**
-- Code Review
-- Best Practices prüfen
-- Security Review
-- Performance-Optimierungen vorschlagen
-- Dokumentation prüfen
+**Responsibilities:**
+- Code review
+- Check best practices
+- Security review
+- Suggest performance optimizations
+- Review documentation
 
-**Status:** 🚧 Geplant für Phase 3
+**Status:** 🚧 Planned for Phase 3
 
 ## 🔄 Agent Collaboration Workflow
 
-### Typischer Ablauf
+### Typical Flow
 
-1. **User Input**: Task oder Anforderung wird gestellt
-2. **Orchestrator**: Analysiert Task und routet zu geeignetem Agent
-3. **Architect Agent**: Erstellt High-Level Plan und Architektur
-4. **Backend/Frontend Agents**: Implementieren basierend auf Architektur
-5. **QA Agent**: Validiert Implementierung und erstellt Tests
-6. **Reviewer Agent**: Final Review und Feedback
-7. **Orchestrator**: Sammelt Ergebnisse und liefert Output
+1. **User Input**: Task or requirement is provided
+2. **Orchestrator**: Analyzes task and routes to appropriate agent
+3. **Architect Agent**: Creates high-level plan and architecture
+4. **Backend/Frontend Agents**: Implement based on architecture
+5. **QA Agent**: Validates implementation and creates tests
+6. **Reviewer Agent**: Final review and feedback
+7. **Orchestrator**: Collects results and delivers output
 
-### Agent-zu-Agent Kommunikation
+### Agent-to-Agent Communication
 
-Agents kommunizieren über **Shared State** (LangGraph StateGraph):
+Agents communicate via **Shared State** (LangGraph StateGraph):
 
 ```python
 class TeamState:
     messages: List[Message]           # Conversation History
-    current_task: str                 # Aktuelle Aufgabe
+    current_task: str                 # Current Task
     artifacts: Dict[str, Any]         # Shared Outputs
     next_agent: str                   # Routing Information
 ```
 
-## 🛠️ Für AI-Tools: Entwicklungsanweisungen
+## 🛠️ For AI-Tools: Development Instructions
 
-### Wenn du ein neuer Agent bist oder mit diesem System arbeitest:
+### If you are a new agent or working with this system:
 
-#### 1. System verstehen
-- Lies diese AGENTS.md vollständig
-- Verstehe die Multi-Agent Architektur
-- Beachte die Rollen-Trennung
+#### 1. Understand the System
+- Read this AGENTS.md completely
+- Understand the multi-agent architecture
+- Respect role separation
 
-#### 2. Entwicklungs-Workflow befolgen
-- **Issue-First**: Erstelle immer zuerst ein GitHub Issue
-- **Feature Branches**: Niemals direkt auf `main` committen
-- Branch-Format: `feature/issue-nummer-beschreibung`
-- **Akzeptanzkriterien**: Issues dürfen nur geschlossen werden, wenn ALLE Akzeptanzkriterien erfüllt sind
-- **PR Merge**: Pull Requests nur mergen, wenn alle Akzeptanzkriterien des zugehörigen Issues abgehakt sind
+#### 2. Follow Development Workflow
+- **Issue-First**: Always create a GitHub Issue first
+- **Feature Branches**: Never commit directly to `main`
+- Branch format: `feature/issue-number-description`
+- **Acceptance Criteria**: Issues may only be closed when ALL acceptance criteria are met
+- **PR Merge**: Pull requests may only be merged when all acceptance criteria of the associated issue are checked off
 
-#### 3. Agent-Implementierung
-Wenn du einen neuen Agent implementierst:
+#### 3. Agent Implementation
+If you implement a new agent:
 
 ```python
 from opensquad.src.agents.base import BaseAgent, AgentConfig, AgentRole
@@ -182,7 +182,7 @@ class MyNewAgent(BaseAgent):
 ```
 
 #### 4. Integration in Orchestration
-Neue Agents müssen in den LangGraph Workflow integriert werden:
+New agents must be integrated into the LangGraph workflow:
 
 ```python
 # In orchestration/workflow.py
@@ -191,7 +191,7 @@ workflow.add_edge("my_agent", "router")
 ```
 
 #### 5. Testing
-Jeder Agent braucht Tests:
+Every agent needs tests:
 
 ```python
 # tests/agents/test_my_agent.py
@@ -201,27 +201,27 @@ async def test_my_agent_basic():
     assert result["status"] == "completed"
 ```
 
-## 🎯 Best Practices für Agent-Entwicklung
+## 🎯 Best Practices for Agent Development
 
 ### DO ✅
-- Klare Rollen-Trennung beachten
-- Type Hints verwenden
-- Docstrings schreiben
-- Fehlerbehandlung implementieren
-- Tests schreiben
-- Context aus Shared State nutzen
+- Respect clear role separation
+- Use type hints
+- Write docstrings
+- Implement error handling
+- Write tests
+- Use context from shared state
 
 ### DON'T ❌
-- Agents direkt auf andere Agents zugreifen
-- Ohne Issue entwickeln
-- Direkt auf `main` committen
-- Agent-Rollen vermischen
-- Ohne Tests deployen
+- Access other agents directly
+- Develop without an issue
+- Commit directly to `main`
+- Mix agent roles
+- Deploy without tests
 
-## 🔧 Technische Details
+## 🔧 Technical Details
 
 ### LLM Integration
-Agents nutzen Ollama für lokale LLM-Inferenz:
+Agents use Ollama for local LLM inference:
 
 ```python
 from langchain_ollama import OllamaLLM
@@ -233,38 +233,38 @@ llm = OllamaLLM(
 )
 ```
 
-### Unterstützte Modelle
-- **llama3** (Standard) - Gut für allgemeine Aufgaben
-- **mistral** - Schnell, effizient
-- **mixtral** - Für komplexere Reasoning-Tasks
+### Supported Models
+- **llama3** (default) - Good for general tasks
+- **mistral** - Fast, efficient
+- **mixtral** - For more complex reasoning tasks
 
 ### Memory & State
 - Conversation History via LangGraph's `add_messages`
-- Shared Artifacts für Code, Designs, etc.
-- Agent-spezifischer State in `AgentState`
+- Shared Artifacts for code, designs, etc.
+- Agent-specific State in `AgentState`
 
-## 📚 Weiterführende Dokumentation
+## 📚 Further Documentation
 
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Development Workflow
-- [README.md](README.md) - Projekt-Übersicht
-- `docs/architecture.md` - Detaillierte Architektur (geplant)
-- `docs/langgraph.md` - LangGraph Integration (geplant)
+- [README.md](README.md) - Project Overview
+- `docs/architecture.md` - Detailed Architecture (planned)
+- `docs/langgraph.md` - LangGraph Integration (planned)
 
-## 🚀 Quick Start für neue Agents
+## 🚀 Quick Start for New Agents
 
 ```bash
-# 1. Issue erstellen
+# 1. Create issue
 gh issue create --title "Implement XYZ Agent" --label "feature"
 
-# 2. Branch erstellen (z.B. Issue #10)
+# 2. Create branch (e.g., Issue #10)
 git checkout -b feature/10-implement-xyz-agent
 
-# 3. Agent-Datei erstellen
+# 3. Create agent file
 touch src/agents/xyz_agent.py
 
-# 4. Agent implementieren (siehe Template oben)
+# 4. Implement agent (see template above)
 
-# 5. Tests schreiben
+# 5. Write tests
 touch tests/agents/test_xyz_agent.py
 
 # 6. Commit & Push
@@ -272,16 +272,16 @@ git add .
 git commit -m "feat: Add XYZ agent implementation (#10)"
 git push -u origin feature/10-implement-xyz-agent
 
-# 7. PR erstellen
+# 7. Create PR
 gh pr create --title "Implement XYZ Agent" --body "Closes #10"
 ```
 
-## ❓ Fragen zum Agent System?
+## ❓ Questions about the Agent System?
 
-Bei Fragen zur Agent-Architektur:
-- GitHub Issue mit Label `question` öffnen
-- In der Issue-Beschreibung auf diese Datei referenzieren
+If you have questions about agent architecture:
+- Open a GitHub Issue with label `question`
+- Reference this file in the issue description
 
 ---
 
-**Diese Datei wird laufend aktualisiert mit neuen Agents und Patterns.**
+**This file is continuously updated with new agents and patterns.**

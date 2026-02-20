@@ -1,90 +1,90 @@
 # Contributing to OpenSquad
 
-Vielen Dank für dein Interesse an OpenSquad! Dieses Dokument beschreibt unsere Entwicklungsrichtlinien und Best Practices.
+Thank you for your interest in OpenSquad! This document describes our development guidelines and best practices.
 
 ## 🔄 Development Workflow
 
-### Grundprinzipien
+### Core Principles
 
-1. **Issue-First**: Jede Änderung beginnt mit einem GitHub Issue
-2. **Feature Branches**: Niemals direkt auf `main` committen
-3. **Conventional Commits**: Verwende stets Conventional Commit Messages
+1. **Issue-First**: Every change starts with a GitHub Issue
+2. **Feature Branches**: Never commit directly to `main`
+3. **Conventional Commits**: Always use Conventional Commit Messages
 
-### 1. Issue-First Ansatz
+### 1. Issue-First Approach
 
-**Jede Änderung beginnt mit einem GitHub Issue.**
+**Every change starts with a GitHub Issue.**
 
-- Erstelle ein Issue für jedes neue Feature, jeden Bugfix oder jede Verbesserung
-- Beschreibe das Problem oder die Anforderung klar
-- Definiere Akzeptanzkriterien
-- Label hinzufügen (`feature`, `bug`, `documentation`, etc.)
+- Create an issue for every new feature, bugfix, or improvement
+- Describe the problem or requirement clearly
+- Define acceptance criteria
+- Add labels (`feature`, `bug`, `documentation`, etc.)
 
-**Beispiel Issue:**
+**Example Issue:**
 ```
 Title: Implement QA Agent
 Body:
-## Ziel
-QA Agent implementieren für automatisierte Testing und Validation
+## Goal
+Implement QA Agent for automated testing and validation
 
-## Aufgaben
-- [ ] Agent-Klasse erstellen
-- [ ] Test-Framework Integration
-- [ ] Unit Tests schreiben
+## Tasks
+- [ ] Create agent class
+- [ ] Test framework integration
+- [ ] Write unit tests
 
-## Akzeptanzkriterien
-- [ ] QA Agent kann Test Cases generieren
-- [ ] Tests werden ausgeführt und Ergebnisse zurückgegeben
+## Acceptance Criteria
+- [ ] QA Agent can generate test cases
+- [ ] Tests are executed and results returned
 ```
 
-### 2. Feature Branch Strategie
+### 2. Feature Branch Strategy
 
-**Niemals direkt auf `main` committen.**
+**Never commit directly to `main`.**
 
 #### Branch Naming Convention
 ```
-feature/issue-nummer-kurze-beschreibung
-bugfix/issue-nummer-kurze-beschreibung
-docs/issue-nummer-kurze-beschreibung
+feature/issue-number-short-description
+bugfix/issue-number-short-description
+docs/issue-number-short-description
 ```
 
-**Beispiele:**
+**Examples:**
 - `feature/5-implement-qa-agent`
 - `bugfix/12-fix-ollama-connection`
 - `docs/8-update-api-documentation`
 
 #### Workflow
 ```bash
-# 1. Issue erstellen (z.B. Issue #5)
+# 1. Create issue (e.g., Issue #5)
 gh issue create --title "Implement QA Agent" --label "feature"
 
-# 2. Feature Branch erstellen
+# 2. Create feature branch
 git checkout -b feature/5-implement-qa-agent
 
-# 3. Entwicklung durchführen
+# 3. Develop
 # ... code changes ...
 
-# 4. Commits mit Issue-Referenz
+# 4. Commit with issue reference
 git commit -m "feat: Add QA agent base class (#5)"
 
-# 5. Branch pushen
+# 5. Push branch
 git push -u origin feature/5-implement-qa-agent
 
-# 6. Pull Request erstellen
+# 6. Create pull request
 gh pr create --title "Implement QA Agent" --body "Closes #5"
 
-# 7. Nach Review: Merge auf main
-# 8. Branch löschen
+# 7. After review: Merge to main
+# 8. Delete branch
 git branch -d feature/5-implement-qa-agent
 ```
 
 ### 3. Commit Message Convention
 
-**⚠️ WICHTIG: Verwende stets Conventional Commit Messages!**
+**⚠️ IMPORTANT: Always use Conventional Commit Messages!**
 
-Wir folgen strikt dem [Conventional Commits](https://www.conventionalcommits.org/) Standard:
+We strictly follow the [Conventional Commits](https://www.conventionalcommits.org/) standard:
 
 ```
-<type>: <description> (#issue-nummer)
+<type>: <description> (#issue-number)
 
 [optional body]
 
@@ -92,67 +92,67 @@ Wir folgen strikt dem [Conventional Commits](https://www.conventionalcommits.org
 ```
 
 **Types:**
-- `feat:` - Neues Feature
-- `fix:` - Bugfix
-- `docs:` - Dokumentation
-- `refactor:` - Code-Refactoring
-- `test:` - Tests hinzufügen/ändern
-- `chore:` - Build, Dependencies, etc.
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation
+- `refactor:` - Code refactoring
+- `test:` - Add/modify tests
+- `chore:` - Build, dependencies, etc.
 
-**Beispiele:**
+**Examples:**
 ```bash
 git commit -m "feat: Add architect agent implementation (#3)"
 git commit -m "fix: Correct ollama connection timeout (#7)"
 git commit -m "docs: Update AGENTS.md with workflow examples (#2)"
 ```
 
-**Warum Conventional Commits?**
-- Automatische Changelog-Generierung
-- Semantische Versionierung
-- Bessere Nachvollziehbarkeit der Änderungen
-- Standard für moderne Projekte
+**Why Conventional Commits?**
+- Automatic changelog generation
+- Semantic versioning
+- Better traceability of changes
+- Standard for modern projects
 
-## 🤖 Entwicklung mit AI-Tools
+## 🤖 Development with AI Tools
 
-### Für GitHub Copilot / VS Code Nutzer
+### For GitHub Copilot / VS Code Users
 
-Bei der Nutzung von AI-Tools (GitHub Copilot, Claude, ChatGPT) für die Entwicklung:
+When using AI tools (GitHub Copilot, Claude, ChatGPT) for development:
 
-1. **Kontext bereitstellen**: Verweise auf AGENTS.md und relevante Dokumentation
-2. **Issue-Nummer erwähnen**: "Implementiere Feature für Issue #5"
-3. **Workflow einhalten**: AI soll Issue-first und Feature Branches respektieren
-4. **Code Review**: AI-generierter Code muss reviewed werden
+1. **Provide context**: Reference AGENTS.md and relevant documentation
+2. **Mention issue number**: "Implement feature for Issue #5"
+3. **Follow workflow**: AI should respect issue-first and feature branches
+4. **Code review**: AI-generated code must be reviewed
 
-### Beispiel-Prompt für AI
+### Example Prompt for AI
 ```
-Ich arbeite an Issue #5 (QA Agent implementieren).
-Bitte erstelle die QA Agent Klasse entsprechend der 
-Architektur in AGENTS.md. Der Code soll auf dem Branch 
-feature/5-implement-qa-agent erstellt werden.
+I'm working on Issue #5 (implement QA Agent).
+Please create the QA Agent class according to the 
+architecture in AGENTS.md. The code should be created on the 
+feature/5-implement-qa-agent branch.
 ```
 
 ## 📋 Pull Request Guidelines
 
-### Vor dem PR
-- [ ] Code läuft lokal ohne Fehler
-- [ ] Tests geschrieben und bestehen
-- [ ] Dokumentation aktualisiert
-- [ ] Issue-Referenz im PR
+### Before PR
+- [ ] Code runs locally without errors
+- [ ] Tests written and passing
+- [ ] Documentation updated
+- [ ] Issue reference in PR
 
 ### PR Template
 ```markdown
-## Änderungen
-Kurze Beschreibung der Änderungen
+## Changes
+Brief description of changes
 
 ## Issue
-Closes #issue-nummer
+Closes #issue-number
 
 ## Testing
-Wie wurde getestet?
+How was this tested?
 
 ## Checklist
-- [ ] Tests hinzugefügt
-- [ ] Dokumentation aktualisiert
+- [ ] Tests added
+- [ ] Documentation updated
 - [ ] Code reviewed
 ```
 
@@ -166,37 +166,37 @@ opensquad/
 │   ├── memory/         # State Management
 │   └── tools/          # Agent Tools
 ├── tests/              # Tests
-├── docs/               # Dokumentation
-├── examples/           # Beispiele
-└── config/             # Konfiguration
+├── docs/               # Documentation
+├── examples/           # Examples
+└── config/             # Configuration
 ```
 
 ## 🧪 Testing
 
 ```bash
-# Tests ausführen
+# Run tests
 pytest tests/
 
-# Mit Coverage
+# With coverage
 pytest --cov=src tests/
 
-# Spezifische Tests
+# Specific tests
 pytest tests/agents/test_architect_agent.py
 ```
 
 ## 📝 Code Style
 
 - Python 3.11+
-- Type Hints verwenden
-- Docstrings für Klassen und Funktionen
-- Max. Line Length: 100 Zeichen
+- Use type hints
+- Docstrings for classes and functions
+- Max. line length: 100 characters
 
-## ❓ Fragen?
+## ❓ Questions?
 
-Bei Fragen oder Unklarheiten:
-- GitHub Issue öffnen mit Label `question`
-- Diskussion starten in GitHub Discussions
+If you have questions or need clarification:
+- Open a GitHub Issue with label `question`
+- Start a discussion in GitHub Discussions
 
-## 🙏 Danke!
+## 🙏 Thank You!
 
-Vielen Dank für deine Contribution zu OpenSquad!
+Thank you for your contribution to OpenSquad!
