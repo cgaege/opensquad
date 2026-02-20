@@ -1,130 +1,130 @@
 # 🤖 OpenSquad – Multi-Agent AI Coding System
 
-> **Ein Enterprise-ready Multi-Agent Framework für AI Software Engineering**
+> **An Enterprise-ready Multi-Agent Framework for AI Software Engineering**
 
-OpenSquad ist ein Multi-Agent AI System, das ein virtuelles Entwicklerteam mit spezialisierten Agenten simuliert. Das Projekt kombiniert moderne Agentic AI Patterns mit praktischer Softwarearchitektur-Erfahrung.
+OpenSquad is a multi-agent AI system that simulates a virtual development team with specialized agents. The project combines modern Agentic AI patterns with practical software architecture experience.
 
 ## 🎯 Vision
 
-### Langfristige Vision: Self-Improving Agentic System
+### Long-term Vision: Self-Improving Agentic System
 
-**OpenSquad entwickelt sich selbst weiter.**
+**OpenSquad improves itself.**
 
-Die Agents in diesem Projekt sollen in der Lage sein, das OpenSquad-Projekt eigenständig weiterzuentwickeln – ein **selbstverbesserndes Multi-Agent System**. Dies bedeutet:
+The agents in this project should be able to autonomously further develop the OpenSquad project – a **self-improving multi-agent system**. This means:
 
-- 🔄 **Agents entwickeln Agents**: Neue Agent-Implementierungen durch bestehende Agents
-- 🛠️ **Tool-gesteuerte Development**: Agents nutzen Git, GitHub API, File Operations
-- 📋 **Autonomous Workflow**: Issue-Erstellung, Feature Branches, PRs – vollständig autonom
-- ✅ **Self-Review & Quality Gates**: Code Review Agent validiert Änderungen
-- 🧠 **Self-Reflection**: Agents evaluieren eigene Outputs und iterieren
+- 🔄 **Agents develop Agents**: New agent implementations by existing agents
+- 🛠️ **Tool-driven Development**: Agents use Git, GitHub API, File Operations
+- 📋 **Autonomous Workflow**: Issue creation, feature branches, PRs – fully autonomous
+- ✅ **Self-Review & Quality Gates**: Code Review Agent validates changes
+- 🧠 **Self-Reflection**: Agents evaluate their own outputs and iterate
 
-### Praktische Ziele
+### Practical Goals
 
-- Praktische Erfahrung mit Agentic AI und Multi-Agent-Architekturen sammeln
-- Enterprise-fähige AI-Systeme mit Fokus auf Architektur und Systemdesign entwickeln
-- Thought Leadership im Bereich AI Agent Orchestration aufbauen
-- Wiederverwendbares Framework für Kundenprojekte schaffen
+- Gain practical experience with Agentic AI and multi-agent architectures
+- Develop enterprise-ready AI systems with focus on architecture and system design
+- Build thought leadership in AI agent orchestration
+- Create reusable framework for customer projects
 
-## 🏗️ Architektur
+## 🏗️ Architecture
 
-### Agent-Rollen
+### Agent Roles
 
-Das System besteht aus spezialisierten Agenten, die als virtuelles Entwicklerteam zusammenarbeiten:
+The system consists of specialized agents working together as a virtual development team:
 
-- **Architect Agent** – System Design, Architekturentscheidungen
-- **Backend Agent** – Backend-Code-Generierung und APIs
-- **Frontend Agent** – UI/UX und Frontend-Implementierung
-- **QA Agent** – Testing, Qualitätssicherung
-- **Reviewer Agent** – Code Review, Best Practices
+- **Architect Agent** – System Design, architecture decisions
+- **Backend Agent** – Backend code generation and APIs
+- **Frontend Agent** – UI/UX and frontend implementation
+- **QA Agent** – Testing, quality assurance
+- **Reviewer Agent** – Code review, best practices
 
 ### Tech Stack (Phase 1)
 
 - **Framework**: LangGraph + LangChain
-- **Modelle**: Ollama (lokal) – Llama 3, Mistral, Mixtral
-- **Sprache**: Python 3.11+
+- **Models**: Ollama (local) – Llama 3, Mistral, Mixtral
+- **Language**: Python 3.11+
 - **Orchestration**: LangGraph StateGraph
-- **Interface**: CLI (später Web UI)
+- **Interface**: CLI (later Web UI)
 
-## 📁 Projekt-Struktur
+## 📁 Project Structure
 
 ```
 opensquad/
 ├── src/
-│   ├── agents/          # Agent-Implementierungen
+│   ├── agents/          # Agent implementations
 │   ├── orchestration/   # LangGraph Workflows
 │   ├── memory/          # Memory & State Management
 │   ├── tools/           # Agent Tools
 │   └── cli/             # Command-Line Interface
 ├── tests/               # Unit & Integration Tests
-├── docs/                # Dokumentation & Architektur
-├── examples/            # Beispiel-Workflows
-└── config/              # Konfigurationsdateien
+├── docs/                # Documentation & Architecture
+├── examples/            # Example Workflows
+└── config/              # Configuration Files
 ```
 
 ## 🚀 Quick Start
 
-### Voraussetzungen
+### Prerequisites
 
 - Python 3.11+
-- Ollama installiert und laufend
-- MacBook (M1/M3) mit mindestens 16 GB RAM
+- Ollama installed and running
+- MacBook (M1/M3) with at least 16 GB RAM
 
 ### Installation
 
 ```bash
-# Repository klonen
+# Clone repository
 git clone https://github.com/yourusername/opensquad.git
 cd opensquad
 
-# Virtual Environment erstellen
+# Create virtual environment
 python -m venv .venv
 source .venv/bin/activate  # macOS/Linux
 
-# Dependencies installieren
+# Install dependencies
 pip install -e .
 
-# Ollama Modelle herunterladen
+# Download Ollama models
 ollama pull llama3
 ollama pull mistral
 ```
 
-### Erste Schritte
+### First Steps
 
 ```bash
-# System starten
+# Start system
 python -m opensquad.cli --help
 
-# Beispiel-Task ausführen
+# Execute example task
 python -m opensquad.cli task "Create a simple REST API for user management"
 ```
 
 ## 📈 Roadmap
 
-### Phase 1: Foundation (aktuell)
-- ✅ Projekt-Setup und Struktur
+### Phase 1: Foundation (current)
+- ✅ Project setup and structure
 - 🔄 Core Agent Framework
-- 🔄 Multi-Agent Orchestration mit LangGraph
+- 🔄 Multi-Agent Orchestration with LangGraph
 - ⏳ CLI Interface
 
 ### Phase 2: Collaboration
-- ⏳ Agent-zu-Agent Kommunikation
+- ⏳ Agent-to-Agent Communication
 - ⏳ Memory & Context Management
 - ⏳ Tool Integration (Git, File Operations)
 - ⏳ Evaluation Framework
 
 ### Phase 3: Enterprise Features
-- ⏳ Cloud-Modell Integration (Azure OpenAI)
-- ⏳ Hybrid-Architektur (lokal + cloud)
-- ⏳ Kubernetes-Deployment
-- ⏳ DSGVO-Compliance
+- ⏳ Cloud Model Integration (Azure OpenAI)
+- ⏳ Hybrid Architecture (local + cloud)
+- ⏳ Kubernetes Deployment
+- ⏳ GDPR Compliance
 
 ### Phase 4: Advanced Orchestration
-- ⏳ n8n Integration für Workflow Management
+- ⏳ n8n Integration for Workflow Management
 - ⏳ Observability & Monitoring
 - ⏳ Governance Layer
 - ⏳ Business Process Integration
 
-## 🧠 Konzepte
+## 🧠 Concepts
 
 ### Agentic Patterns
 
@@ -132,47 +132,47 @@ python -m opensquad.cli task "Create a simple REST API for user management"
 - **Tool Use**: Agenten nutzen externe Tools (Git, IDE, Testing)
 - **Memory**: Kontext über Agent-Interaktionen hinweg
 - **Reflection**: Selbst-Evaluation und iterative Verbesserung
-- **Collaboration**: Multi-Agent Kommunikationsprotokolle
+- **Collaboration**: Multi-agent communication protocols
 
-### Design-Prinzipien
+### Design Principles
 
-- **Code-First Approach**: Tiefes Verständnis vor Abstraktion
-- **Local-First**: Entwicklung mit lokalen Modellen
-- **Enterprise-Ready**: Von Anfang an auf Skalierbarkeit ausgelegt
-- **Modular**: Austauschbare Komponenten und Agenten
-- **Observable**: Transparenz über Agent-Entscheidungen
+- **Code-First Approach**: Deep understanding before abstraction
+- **Local-First**: Development with local models
+- **Enterprise-Ready**: Designed for scalability from the start
+- **Modular**: Interchangeable components and agents
+- **Observable**: Transparency about agent decisions
 
-## 🔧 Entwicklung
+## 🔧 Development
 
 ```bash
-# Tests ausführen
+# Run tests
 pytest tests/
 
 # Linting
 ruff check src/
 
-# Type Checking
+# Type checking
 mypy src/
 ```
 
-## 📚 Dokumentation
+## 📚 Documentation
 
-Detaillierte Dokumentation findest du unter:
+Detailed documentation can be found at:
 
-- [Architektur-Übersicht](docs/architecture.md)
-- [Agent-Entwicklung](docs/agent-development.md)
+- [Architecture Overview](docs/architecture.md)
+- [Agent Development](docs/agent-development.md)
 - [LangGraph Integration](docs/langgraph.md)
-- [Memory-System](docs/memory.md)
+- [Memory System](docs/memory.md)
 
 ## 🤝 Contribution
 
-Dies ist ein Lernprojekt. Feedback und Vorschläge sind willkommen!
+This is a learning project. Feedback and suggestions are welcome!
 
-## 📝 Lizenz
+## 📝 License
 
 MIT License
 
 ---
 
 **Built with 🧠 by Christian Gaege**
-*20 Jahre Software Engineering meets Agentic AI*
+*20 years of Software Engineering meets Agentic AI*
