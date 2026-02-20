@@ -191,7 +191,7 @@ workflow.add_edge("my_agent", "router")
 ```
 
 #### 5. Testing
-Every agent needs tests:
+Every agent needs tests with sufficient coverage:
 
 ```python
 # tests/agents/test_my_agent.py
@@ -199,7 +199,24 @@ async def test_my_agent_basic():
     agent = MyNewAgent()
     result = await agent.process("test task", {})
     assert result["status"] == "completed"
+
+async def test_my_agent_error_handling():
+    agent = MyNewAgent()
+    result = await agent.process("", {})
+    assert "error" in result
+
+async def test_my_agent_with_context():
+    agent = MyNewAgent()
+    context = {"previous_step": "data"}
+    result = await agent.process("task", context)
+    assert result["context_used"] is True
 ```
+
+**Test Coverage Requirements:**
+- Unit tests for all public methods
+- Error handling and edge cases
+- Integration tests with LLM (mocked or real)
+- Acceptance criteria validation
 
 ## 🎯 Best Practices for Agent Development
 
@@ -208,7 +225,7 @@ async def test_my_agent_basic():
 - Use type hints
 - Write docstrings
 - Implement error handling
-- Write tests
+- Write tests with sufficient coverage
 - Use context from shared state
 
 ### DON'T ❌
